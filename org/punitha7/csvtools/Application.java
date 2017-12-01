@@ -7,12 +7,16 @@ public class Application {
 	}
 	
 	private void run() {
-		String filepath = "employee.csv";
+		String filepath = "employee_header.csv";
 		
 		CSVFile csvFile = CSVFileLoader.loadFile(filepath);
 		
 		if(csvFile != null) {
 			System.out.println(csvFile);
+			
+			for(String s : csvFile.getColumnValues("name")) {
+				System.out.println("Name=> " + s);
+			}
 		} else {
 			System.out.println("error: csvfile is null =(");
 		}
