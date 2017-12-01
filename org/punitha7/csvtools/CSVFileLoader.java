@@ -1,12 +1,14 @@
 package org.punitha7.csvtools;
 
+import java.io.File;
+
 /**
  * Static methods to load CSV files
  * 
  * @author Jesse Pospisil <posmicanomaly@gmail.com>
  *
  */
-public class CSVFileLoader {
+public abstract class CSVFileLoader {
 	
 	/**
 	 * Load a CSV file from disk
@@ -14,10 +16,14 @@ public class CSVFileLoader {
 	 * @return file CSVFile
 	 */
 	public static CSVFile loadFile(String filepath) {
-		CSVFile file = null;
-		/*
-		 * Implement the file loading logic
-		 */
-		return file;
+		CSVFile result = null;
+		
+		File file = new File(filepath);
+		if(file.exists()) {
+			result = new CSVFile(file);
+		} else {
+			System.out.println("error: " + filepath + " is not found");
+		}
+		return result;
 	}
 }
