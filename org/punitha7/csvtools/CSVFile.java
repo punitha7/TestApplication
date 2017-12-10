@@ -16,6 +16,8 @@ import java.util.Scanner;
  */
 public class CSVFile {
 
+	// Need enum for HEADER and NOHEADER
+	
 	private ArrayList<String> header;
 	private ArrayList<HashMap<String, String>> rows;
 
@@ -39,6 +41,28 @@ public class CSVFile {
 		return result;
 	}
 	
+	/**
+	 * Count how many values are in a line. Can be used to help make a default header
+	 * @param line
+	 * @return
+	 */
+	private int countValues(String line) {
+		int count = 0;
+		
+		return count;
+	}
+	
+	/**
+	 * Create a default header for when there is no header
+	 * @param columns
+	 * @return
+	 */
+	private ArrayList<String> createDefaultHeader(int columns) {
+		ArrayList<String> result = new ArrayList<>();
+		
+		return result;
+	}
+	
 	private HashMap<String, String> parseLine(String line) {
 		HashMap<String, String> result = new HashMap<String, String>();
 		
@@ -51,10 +75,12 @@ public class CSVFile {
 		return result;
 	}
 	
+	
 	private ArrayList<HashMap<String, String>> loadCSVFile(File file) {
 
 		ArrayList<HashMap<String, String>> result = new ArrayList<>();
 		Scanner scanner = null;
+		//todo: need to add check if we need to make a default header before adding rows
 		boolean headerRow = true;
 		try {
 			scanner = new Scanner(file);
