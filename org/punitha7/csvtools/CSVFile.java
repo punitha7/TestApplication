@@ -18,6 +18,7 @@ public class CSVFile {
 
 	// Need enum for HEADER and NOHEADER
 	
+	
 	private ArrayList<String> header;
 	private ArrayList<HashMap<String, String>> rows;
 
@@ -47,9 +48,9 @@ public class CSVFile {
 	 * @return
 	 */
 	private int countValues(String line) {
-		int count = 0;
+		 
 		
-		return count;
+		return line.split(",").length;
 	}
 	
 	/**
@@ -90,6 +91,7 @@ public class CSVFile {
 				if(headerRow) {
 					header = parseHeader(line);
 					headerRow = false;
+					System.out.println("columnCount: " + countValues(line));
 				} else {
 					HashMap<String, String> parsedLine = parseLine(line);
 					result.add(parsedLine);
@@ -100,7 +102,9 @@ public class CSVFile {
 		} finally {
 			scanner.close();
 		}
+		
 		return result;
+		
 	}
 	
 	@Override
